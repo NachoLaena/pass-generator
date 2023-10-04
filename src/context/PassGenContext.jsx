@@ -1,9 +1,42 @@
 import { createContext, useContext, useState } from "react";
+export const PassGenContext = createContext(null);
 
-const PassGenContext = createContext(null);
+export const PassGenProvider = ({ children }) => { 
+  const [isLower, setIsLower] = useState(true);
+  const [isUpper, setIsUpper] = useState(true);
+  const [isNum, setIsNum] = useState(true);
+  const [isSpecial, setIsSpecial] = useState(true);
 
-export const PassGenProvider = ({ children }) => {
+  const toogleIsLower = () => {
+    setIsLower((prev)=>!prev);
+  }
+
+  const toogleIsUpper = () => {
+    setIsUpper((prev)=>!prev);
+  }
+
+  const toogleIsNum = () => {
+    setIsNum((prev)=>!prev);
+  }
+
+  const toogleIsSpecial = () => {
+    setIsSpecial((prev)=>!prev);
+  }
+
   return (
-    <PassGenContext.Provider value={null}>{children}</PassGenContext.Provider>
+    <PassGenContext.Provider
+      value={{
+        isLower,
+        toogleIsLower,
+        isUpper,
+        toogleIsUpper,
+        isNum,
+        toogleIsNum,
+        isSpecial,
+        toogleIsSpecial,
+      }}
+    >
+      {children}
+    </PassGenContext.Provider>
   );
 };

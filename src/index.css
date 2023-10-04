@@ -7,17 +7,25 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #1F0318;
-  background-color: #E5F2C9;
+  --blue: rgb(0, 112, 243);
+  --dark-purple: #1f0318ff;
+  --nyanza: #e5f2c9ff;
+  --bole: #7f534bff;
+  --chamoisee: #8c705fff;
+  --raisin-black: #1e1a1dff;
+
+  color: var(--dark-purple);
+  background-color: var(--nyanza);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
