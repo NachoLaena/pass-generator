@@ -1,27 +1,28 @@
 import { useState, useContext } from "react";
 import { PassGenContext } from "../context/PassGenContext";
-import {text} from "../constants"
+import { options } from "../constants";
 
 // COLORS: --dark-purple --nyanza --bole --chamoisee --raisin-black
 
 export const Option = ({ text }) => {
   const [isActive, setIsActive] = useState(true);
-  const {toogleIsLower, toogleIsUpper, toogleIsNum, toogleIsSpecial} = useContext(PassGenContext);
+  const { toogleIsLower, toogleIsUpper, toogleIsNum, toogleIsSpecial } =
+    useContext(PassGenContext);
 
   const handleClick = () => {
     setIsActive(!isActive);
 
     switch (text) {
-      case text.low:
+      case options.low:
         toogleIsLower();
         break;
-      case text.up:
+      case options.up:
         toogleIsUpper();
         break;
-      case text.numbers:
+      case options.numbers:
         toogleIsNum();
         break;
-      case text.special:
+      case options.special:
         toogleIsSpecial();
         break;
     }
@@ -30,10 +31,11 @@ export const Option = ({ text }) => {
   return (
     <button
       className={`flex justify-center p-4 rounded-xl border-2 cursor-pointer user-select-none font-bold transition-all
+      border-[var(--dark-purple)]
         ${
           isActive
-            ? "text-[var(--nyanza)] bg-[#199856] border-[var(--raisin-black)]"
-            : "text-[var(--raisin-black)] bg-[#7e7e7e] border-[var(--raisin-black)]"
+            ? "text-[var(--nyanza)] bg-[var(--dark-purple)]"
+            : "text-[var(--dark-purple)] bg-[var(--nyanza)]"
         }`}
       onClick={handleClick}
     >
@@ -41,4 +43,3 @@ export const Option = ({ text }) => {
     </button>
   );
 };
-

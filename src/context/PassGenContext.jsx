@@ -6,6 +6,7 @@ export const PassGenProvider = ({ children }) => {
   const [isUpper, setIsUpper] = useState(true);
   const [isNum, setIsNum] = useState(true);
   const [isSpecial, setIsSpecial] = useState(true);
+  const [lengthBar, setLengthBar ]= useState(30);
 
   const toogleIsLower = () => {
     setIsLower((prev)=>!prev);
@@ -34,6 +35,8 @@ export const PassGenProvider = ({ children }) => {
         toogleIsNum,
         isSpecial,
         toogleIsSpecial,
+        lengthBar,
+        setLengthBar
       }}
     >
       {children}
