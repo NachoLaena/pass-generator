@@ -69,7 +69,7 @@ export const Password = () => {
   return (
     <div className="flex justify-center items-center bg-[var(--dark-purple)] rounded p-2">
       <p
-        className="text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] object-fit-sacle-down"
+        className="text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] overflow-hidden"
         onClick={copyToClipboard}
       >
         {password}
