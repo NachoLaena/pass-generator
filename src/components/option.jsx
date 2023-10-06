@@ -7,9 +7,8 @@ import { options } from "../constants";
 export const Option = ({ text }) => {
   const [isActive, setIsActive] = useState(true);
   const [isLastActive, setIsLastActive] = useState(false);
-  let cont = 0;
+
   const {
-    settings,
     toggleIsLower,
     toggleIsUpper,
     toggleIsNum,

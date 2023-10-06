@@ -25,7 +25,7 @@ input[type="range"] {
     -webkit-appearance: none;
     /*Overridedefaultlook*/appearance: none;
     margin-top: -4px;
-    /*Centersthumbonthetrack*/background-color: var(--nyanza);
+    /*Centersthumbonthetrack*/background-color: #dcdcdcff;
     border-radius: 0.5rem;
     border: 2px solid var(--dark-purple);
     height: 1rem;
