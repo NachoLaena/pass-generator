@@ -2,6 +2,7 @@ import { PassGenProvider } from "./context/PassGenContext";
 import { LengthBar } from "./components/lengthBar";
 import { options } from "./constants";
 import { Option } from "./components/Option";
+import {Password} from "./components/password";
 
 // COLORS: --dark-purple --nyanza --bole --chamoisee --raisin-black
 
@@ -23,8 +24,9 @@ function App() {
             <Option text={options.special} />
           </div>
           <LengthBar/>
+          <div className="m-3">Your password:</div>
+          <Password/>
         </PassGenProvider>
-        <div className="m-3">Your password:</div>
       </div>
     </main>
   );

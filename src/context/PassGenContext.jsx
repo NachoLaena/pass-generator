@@ -1,42 +1,41 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 export const PassGenContext = createContext(null);
 
-export const PassGenProvider = ({ children }) => { 
-  const [isLower, setIsLower] = useState(true);
-  const [isUpper, setIsUpper] = useState(true);
-  const [isNum, setIsNum] = useState(true);
-  const [isSpecial, setIsSpecial] = useState(true);
-  const [lengthBar, setLengthBar ]= useState(30);
+export const PassGenProvider = ({ children }) => {
+  const [barLength, setBarLength] = useState(30);
+  const [settings, setSettings] = useState({
+    isLower: true,
+    isUpper: true,
+    isNum: true,
+    isSpecial: true,
+  });
 
-  const toogleIsLower = () => {
-    setIsLower((prev)=>!prev);
-  }
+  const toggleIsLower = () => {
+    setSettings((prev) => ({ ...prev, isLower: !prev.isLower }));
+  };
 
-  const toogleIsUpper = () => {
-    setIsUpper((prev)=>!prev);
-  }
-
-  const toogleIsNum = () => {
-    setIsNum((prev)=>!prev);
-  }
-
-  const toogleIsSpecial = () => {
-    setIsSpecial((prev)=>!prev);
-  }
+  const toggleIsUpper = () => {
+    setSettings((prev) => ({ ...prev, isUpper: !prev.isUpper }));
+  };
+  
+  const toggleIsNum = () => {
+    setSettings((prev) => ({ ...prev, isNum: !prev.isNum }));
+  };
+  
+  const toggleIsSpecial = () => {
+    setSettings((prev) => ({ ...prev, isSpecial: !prev.isSpecial }));
+  };
 
   return (
     <PassGenContext.Provider
       value={{
-        isLower,
-        toogleIsLower,
-        isUpper,
-        toogleIsUpper,
-        isNum,
-        toogleIsNum,
-        isSpecial,
-        toogleIsSpecial,
-        lengthBar,
-        setLengthBar
+        settings,
+        toggleIsLower,
+        toggleIsUpper,
+        toggleIsNum,
+        toggleIsSpecial,
+        barLength,
+        setBarLength,
       }}
     >
       {children}
