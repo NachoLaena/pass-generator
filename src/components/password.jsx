@@ -22,6 +22,7 @@ export const Password = () => {
   const PasswordNotify = () =>
     toast("Password generated!", {
       position: "top-right",
+      duration: 2000
     });
 
   const generateNewOps = () => {
