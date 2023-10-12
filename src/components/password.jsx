@@ -1,6 +1,8 @@
+import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { PassGenContext } from "../context/PassGenContext";
 import { FaRedoAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 export const Password = () => {
   const [password, setPassword] = useState("password");
@@ -11,6 +13,16 @@ export const Password = () => {
     numbers: "0123456789",
     symbols: "!@#$%^&*()_+-=[]{};:,./<>?",
   };
+
+  const ClipBoardNotify = () =>
+    toast.success("Copied to clipboard!", {
+      position: "top-right",
+    });
+
+  const PasswordNotify = () =>
+    toast("Password generated!", {
+      position: "top-right",
+    });
 
   const generateNewOps = () => {
     let newOps = { ...ops };
@@ -32,21 +44,15 @@ export const Password = () => {
   };
 
   const generatePassword = () => {
-    if (
-      !settings.isLower &&
-      !settings.isUpper &&
-      !settings.isNum &&
-      !settings.isSpecial
-    ) {
+    let newOps = generateNewOps();
+    
+    if (Object.keys(newOps).length === 0) {
       setPassword("Select at least one option");
       return;
     }
 
     let newPassword = "";
-    let newOps = generateNewOps();
     let opsLength = Object.keys(newOps).length;
-
-    console.log(newOps);
 
     for (let i = 0; i < barLength; i++) {
       const randomOption = Math.floor(Math.random() * opsLength);
@@ -64,19 +70,23 @@ export const Password = () => {
 
   const copyToClipboard = (e) => {
     navigator.clipboard.writeText(e.currentTarget.textContent);
+    ClipBoardNotify();
   };
 
   return (
     <div className="flex justify-center items-center bg-[var(--dark-purple)] rounded p-2">
       <p
-        className="text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] overflow-hidden"
+        className="text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] overflow-x-scroll whitespace-nowrap"
         onClick={copyToClipboard}
       >
         {password}
       </p>
-      <button className="ml-3" onClick={generatePassword}>
+      <button className="" onClick={generatePassword}>
         {password !== "Select at least one option" && (
-          <FaRedoAlt className="w-6 h-6 text-[#dcdcdcff]" />
+          <FaRedoAlt
+            className="ml-2 w-6 h-6 text-[#dcdcdcff]"
+            onClick={PasswordNotify}
+          />
         )}
       </button>
     </div>
