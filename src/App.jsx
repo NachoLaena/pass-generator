@@ -1,14 +1,14 @@
 import { PassGenProvider } from "./context/PassGenContext";
 import { LengthBar } from "./components/lengthBar";
 import { options } from "./constants";
-import { Option } from "./components/Option";
-import {Password} from "./components/password";
-
-// COLORS: --dark-purple --nyanza --bole --chamoisee --raisin-black
+import { Option } from "./components/option";
+import { Password } from "./components/password";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <main className="h-screen flex justify-center items-center overflow-hidden">
+      <Toaster />
       <div className="flex p-4 flex-col items-center">
         <h1 className="font-bold text-[var(--dark-purple)] text-3xl">
           Password Generator
@@ -23,9 +23,9 @@ function App() {
             <Option text={options.numbers} />
             <Option text={options.special} />
           </div>
-          <LengthBar/>
+          <LengthBar />
           <div className="m-3">Your password:</div>
-          <Password/>
+          <Password />
         </PassGenProvider>
       </div>
     </main>

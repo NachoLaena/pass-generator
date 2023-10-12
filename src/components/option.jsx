@@ -1,19 +1,13 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { PassGenContext } from "../context/PassGenContext";
 import { options } from "../constants";
-
-// COLORS: --dark-purple --nyanza --bole --chamoisee --raisin-black
 
 export const Option = ({ text }) => {
   const [isActive, setIsActive] = useState(true);
   const [isLastActive, setIsLastActive] = useState(false);
 
-  const {
-    toggleIsLower,
-    toggleIsUpper,
-    toggleIsNum,
-    toggleIsSpecial,
-  } = useContext(PassGenContext);
+  const { toggleIsLower, toggleIsUpper, toggleIsNum, toggleIsSpecial } =
+    useContext(PassGenContext);
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -22,16 +16,16 @@ export const Option = ({ text }) => {
       case options.low:
         toggleIsLower();
         break;
-        case options.up:
-          toggleIsUpper();
+      case options.up:
+        toggleIsUpper();
         break;
       case options.numbers:
         toggleIsNum();
         break;
-        case options.special:
-          toggleIsSpecial();
+      case options.special:
+        toggleIsSpecial();
         break;
-      }
+    }
   };
 
   return (
