@@ -43,11 +43,13 @@ export const Password = () => {
     return newOps;
   };
 
+  const msgNoOpsSelected = "Select at least one option";
+
   const generatePassword = () => {
     let newOps = generateNewOps();
-    
+
     if (Object.keys(newOps).length === 0) {
-      setPassword("Select at least one option");
+      setPassword(msgNoOpsSelected);
       return;
     }
 
@@ -76,8 +78,8 @@ export const Password = () => {
   return (
     <div className="flex justify-center items-center bg-[var(--dark-purple)] rounded p-2">
       <p
-        className="text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] overflow-x-scroll whitespace-nowrap"
-        onClick={copyToClipboard}
+        className='text-center font-bold text-xl text-[var(--nyanza)] cursor-pointer max-w-[280px] overflow-x-scroll whitespace-nowrap'
+        onClick={password !== msgNoOpsSelected && copyToClipboard}
       >
         {password}
       </p>
